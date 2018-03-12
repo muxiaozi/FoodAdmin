@@ -1,17 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>UserDetailDialog</class>
- <widget name="UserDetailDialog" class="QDialog">
+ <widget class="QDialog" name="UserDetailDialog">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>578</width>
+    <height>401</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>用户详细</string>
   </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QTableView" name="table"/>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

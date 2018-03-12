@@ -1,12 +1,14 @@
-#ifndef ADMINMODEL_H
+﻿#ifndef ADMINMODEL_H
 #define ADMINMODEL_H
 
-#include <QObject>
+#include "mytablemodel.h"
 
 class AdminModel : public MyTableModel
 {
 public:
-	AdminModel();
+	explicit AdminModel(QObject *parent = 0);
+
+	void update();
 };
 
 #endif // ADMINMODEL_H

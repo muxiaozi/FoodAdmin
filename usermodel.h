@@ -1,25 +1,28 @@
-#ifndef USERMODEL_H
+﻿#ifndef USERMODEL_H
 #define USERMODEL_H
 
-#include <QAbstractTableModel>
+#include "mytablemodel.h"
 
-class UserModel : public QAbstractTableModel
+class UserModel : public MyTableModel
 {
 	Q_OBJECT
 
 public:
 	explicit UserModel(QObject *parent = 0);
 
-	// Header:
-	QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+	void update();
 
-	// Basic functionality:
-	int rowCount(const QModelIndex &parent = QModelIndex()) const override;
-	int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+	qint64 getUserId(const QModelIndex &index);
 
-	QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+	Qt::ItemFlags flags(const QModelIndex &index) const Q_DECL_OVERRIDE;
 
-private:
+	QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
+
+	bool setData(const QModelIndex &index, const QVariant &value, int role) Q_DECL_OVERRIDE;
+
+	bool deleteUser(const QModelIndex &index);
+
+	bool removeRows(int row, int count, const QModelIndex &parent) Q_DECL_OVERRIDE;
 };
 
 #endif // USERMODEL_H

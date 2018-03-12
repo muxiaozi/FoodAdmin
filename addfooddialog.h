@@ -1,22 +1,29 @@
-#ifndef ADDFOOD_H
-#define ADDFOOD_H
+﻿#ifndef ADDFOODDIALOG_H
+#define ADDFOODDIALOG_H
 
 #include <QDialog>
 
 namespace Ui {
-	class AddFood;
+	class AddFoodDialog;
 }
 
-class AddFood : public QDialog
+class AddFoodDialog : public QDialog
 {
 	Q_OBJECT
 
 public:
-	explicit AddFood(QWidget *parent = 0);
-	~AddFood();
+	explicit AddFoodDialog(QWidget *parent = 0);
+	~AddFoodDialog();
+
+private slots:
+
+
+	void on_btnOk_clicked();
+
+	void on_btnCancel_clicked();
 
 private:
-	Ui::AddFood *ui;
+	Ui::AddFoodDialog *ui;
 };
 
-#endif // ADDFOOD_H
+#endif // ADDFOODDIALOG_H

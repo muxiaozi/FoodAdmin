@@ -1,1 +1,10 @@
-<RCC/>
+<RCC>
+    <qresource prefix="/">
+        <file>images/purchase.png</file>
+        <file>images/admin.png</file>
+        <file>images/shipment.png</file>
+        <file>images/supplier.png</file>
+        <file>images/user.png</file>
+        <file>images/warehouse.png</file>
+    </qresource>
+</RCC>

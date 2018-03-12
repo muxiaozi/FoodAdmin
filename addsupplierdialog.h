@@ -1,4 +1,4 @@
-#ifndef ADDSUPPLIERDIALOG_H
+﻿#ifndef ADDSUPPLIERDIALOG_H
 #define ADDSUPPLIERDIALOG_H
 
 #include <QDialog>
@@ -14,6 +14,11 @@ class AddSupplierDialog : public QDialog
 public:
 	explicit AddSupplierDialog(QWidget *parent = 0);
 	~AddSupplierDialog();
+
+private slots:
+	void on_btnOk_clicked();
+
+	void on_btnCancel_clicked();
 
 private:
 	Ui::AddSupplierDialog *ui;

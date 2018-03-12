@@ -1,11 +1,15 @@
-#ifndef SUPPLIERMODEL_H
+﻿#ifndef SUPPLIERMODEL_H
 #define SUPPLIERMODEL_H
 
+#include "mytablemodel.h"
 
-class SupplierModel
+class SupplierModel : public MyTableModel
 {
+	Q_OBJECT
 public:
-	SupplierModel();
+	explicit SupplierModel(QObject *parent = 0);
+
+	void update();
 };
 
 #endif // SUPPLIERMODEL_H

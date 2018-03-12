@@ -1,65 +1,21 @@
-#include "shipmentmodel.h"
+﻿#include "shipmentmodel.h"
+#include "database.h"
+#include <QDateTime>
 
 ShipmentModel::ShipmentModel(QObject *parent)
-	: QAbstractTableModel(parent)
+	: MyTableModel(parent)
 {
+	header_data<<"户主"<<"粮食"<<"单价/元"<<"单位"<<"数量"<<"金额/元"<<"时间";
 }
 
-QVariant ShipmentModel::headerData(int section, Qt::Orientation orientation, int role) const
+void ShipmentModel::update(qint64 user_id)
 {
-	// FIXME: Implement me!
-}
-
-bool ShipmentModel::setHeaderData(int section, Qt::Orientation orientation, const QVariant &value, int role)
-{
-	if (value != headerData(section, orientation, role)) {
-		// FIXME: Implement me!
-		emit headerDataChanged(orientation, section, section);
-		return true;
+	beginResetModel();
+	table_data.clear();
+	db->getShipmentList(table_data, user_id);
+	for(int i = 0; i < table_data.length(); ++i){
+		uint _time = table_data.at(i).at(6).toUInt();
+		table_data[i][6] = QDateTime::fromTime_t(_time).toString("yyyy-MM-dd HH:mm");
 	}
-	return false;
-}
-
-
-int ShipmentModel::rowCount(const QModelIndex &parent) const
-{
-	if (!parent.isValid())
-		return 0;
-
-	// FIXME: Implement me!
-}
-
-int ShipmentModel::columnCount(const QModelIndex &parent) const
-{
-	if (!parent.isValid())
-		return 0;
-
-	// FIXME: Implement me!
-}
-
-QVariant ShipmentModel::data(const QModelIndex &index, int role) const
-{
-	if (!index.isValid())
-		return QVariant();
-
-	// FIXME: Implement me!
-	return QVariant();
-}
-
-bool ShipmentModel::setData(const QModelIndex &index, const QVariant &value, int role)
-{
-	if (data(index, role) != value) {
-		// FIXME: Implement me!
-		emit dataChanged(index, index, QVector<int>() << role);
-		return true;
-	}
-	return false;
-}
-
-Qt::ItemFlags ShipmentModel::flags(const QModelIndex &index) const
-{
-	if (!index.isValid())
-		return Qt::NoItemFlags;
-
-	return Qt::ItemIsEditable; // FIXME: Implement me!
+	endResetModel();
 }

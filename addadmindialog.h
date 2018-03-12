@@ -1,4 +1,4 @@
-#ifndef ADDADMINDIALOG_H
+﻿#ifndef ADDADMINDIALOG_H
 #define ADDADMINDIALOG_H
 
 #include <QDialog>
@@ -14,6 +14,11 @@ class AddAdminDialog : public QDialog
 public:
 	explicit AddAdminDialog(QWidget *parent = 0);
 	~AddAdminDialog();
+
+private slots:
+	void on_btnOk_clicked();
+
+	void on_btnCancel_clicked();
 
 private:
 	Ui::AddAdminDialog *ui;
